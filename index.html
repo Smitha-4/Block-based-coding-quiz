@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Block Based coding Quiz</h1>
+
+        <div id="instructions-screen">
+            <h2>Quiz Instructions</h2>
+            <p>Welcome to the Block Based coding Quiz! Read the instructions carefully before you begin:</p>
+            <ul style="text-align: justify;">
+                <li>Answer each question to the best of your ability.</li>
+                <li>Select only one option for each question.</li>
+                <li>Some questions might include code snippets or block images.</li>
+                <li>Click "Next" to go to the next question.</li>
+                <li>Click "Submit" on the last question to see your score!</li>
+            </ul>
+            <strong style="text-align:left;">Note</strong>
+            <ul style="text-align: justify;">
+                <li>You can not go to next question without solving the current question</li>
+                <li>You can not go to the question. There is no back button. </li>
+                <li>So Click the 'Next Button' only when you are sure of the current question</li>
+                <li>You must choose at least one of the options, even if you don't know the answer. Otherwise you will not be able to go to the next question.</li> 
+            </ul>
+            <button id="start-quiz-btn" class="btn">Start Quiz</button>
+        </div>
+
+        <div id="quiz-container" class="hidden">
+            <h2 id="question-text">Question Text Will Go Here</h2>
+<div id="question-image-container">
+    <img id="question-image" src="" alt="Question Image" class="question-img">
+</div>
+
+            <div id="question-image-container" style="display: none;">
+
+                <img id="question-image" src="" alt="Question Image" class="question-img">
+            </div>
+            <div id="answer-options" class="answer-options-grid">
+                </div>
+        </div>
+
+        <div id="result" class="result"></div>
+
+        <button id="next-btn" class="btn hidden">Next</button>
+        <button id="submit-btn" class="btn hidden">Submit</button>
+        <button id="restart-btn" class="btn hidden">Restart Quiz</button>
+
+        </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

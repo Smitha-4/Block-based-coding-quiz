@@ -218,27 +218,27 @@ const quizData = [
 
     // Question 7: Which of the following in a for loop will be executed only once?
     {
-        "question_type": "text_question_image_answers", // Changed: Question text, Image answers
+        "question_type": "text_question_image_answers", // CORRECTED TYPE
         "question_text": "Which of the following in a for loop will be executed only once?",
-        "question_image": null, // Changed: No question image
+        "question_image": null, // CORRECTED: No question image
         "answer_options": [
             {
-                "image": "pictures/q7a1.png", // Changed: Now uses image
+                "image": "pictures/q7a1.png", // CORRECTED: Now uses image
                 "is_correct": false,
                 "rationale": "The loop condition is checked before each iteration."
             },
             {
-                "image": "pictures/q7a2.png", // Changed: Now uses image
+                "image": "pictures/q7a2.png", // CORRECTED: Now uses image
                 "is_correct": false,
                 "rationale": "The loop body executes multiple times as long as the condition is true."
             },
             {
-                "image": "pictures/q7a3.png", // Changed: Now uses image
+                "image": "pictures/q7a3.png", // CORRECTED: Now uses image
                 "is_correct": false,
                 "rationale": "The increment/decrement statement executes after each iteration."
             },
             {
-                "image": "pictures/q7a4.png", // Changed: Now uses image
+                "image": "pictures/q7a4.png", // CORRECTED: Now uses image
                 "is_correct": true,
                 "rationale": "The initialization part of a 'for' loop is executed only once, at the very beginning of the loop's execution."
             }
@@ -306,7 +306,7 @@ const quizData = [
     // Question 10: Choose the correct rules for assigning variable identifier names
     {
         "question_type": "text_question_text_answers",
-        "question_text": "Choose the incorrect rule for assigning variable identifier names:",
+        "question_text": "Choose the correct rules for assigning variable identifier names:",
         "question_image": null, // Theory question, no image
         "answer_options": [
             {
@@ -336,7 +336,7 @@ const quizData = [
     {
         "question_type": "text_question_image_answers",
         "question_text": "Choose the correct initialization and declaration:",
-        "question_image": null, // Assuming q11.png provides context
+        "question_image": "pictures/q11.png", // Assuming q11.png provides context
         "answer_options": [
             {
                 "image": "pictures/q11a1.png",
@@ -370,7 +370,7 @@ const quizData = [
             {
                 "image": "pictures/q12a1.png",
                 "is_correct": true,
-                "rationale": "Executing the given puzzle code blocks results in this specific output."
+                "rationale": "Executing the given puzzle code blocks results in this specific visual outcome."
             },
             {
                 "image": "pictures/q12a2.png",
@@ -708,15 +708,14 @@ const quizData = [
             }
         ]
     },
-    // NEW QUESTIONS ADDED BELOW
     // Question 24: What code should be added to the behaviour so that the character does not go out of the edge?
     {
-        "question_type": "text_question_text_answers", // Assuming text answers as no image paths provided for options
+        "question_type": "image_question_image_answers",
         "question_text": "What code should be added to the behaviour so that the character does not go out of the edge?",
-        "question_image": "pictures/q24.png", // Placeholder image path if applicable
+        "question_image": "pictures/q24.png", // Main question image still applies
         "answer_options": [
             {
-                "image": "pictures/Q2401.png",
+                "image": "pictures/Q24o1.png",
                 "is_correct": false,
                 "rationale": "Wrapping around makes the character reappear on the opposite side, not prevent going out of edge."
             },
@@ -739,9 +738,9 @@ const quizData = [
     },
     // Question 25: What is the correct code to draw a circle?
     {
-        "question_type": "text_question_text_answers", // Assuming text answers as no image paths provided for options
+        "question_type": "text_question_image_answers",
         "question_text": "What is the correct code to draw a circle?",
-        "question_image": null, // Placeholder image path if applicable
+        "question_image": null, // No main question image
         "answer_options": [
             {
                 "image": "pictures/Q25o1.png",
@@ -824,6 +823,7 @@ function loadQuestion() {
             const label = document.createElement('label');
             label.htmlFor = `option${index}`; // Link label to input
 
+            // Determine if options are images or text based on question_type
             if (currentQuestion.question_type.includes('image_answers')) {
                 const img = document.createElement('img');
                 img.src = option.image;
@@ -897,36 +897,49 @@ function handleSubmitButtonClick() {
 function calculateScore() {
     let score = 0;
     let correctAnswersCount = 0;
-    let wrongAnswersCount = 0;
+    let incorrectAnswersCount = 0; // Renamed from wrongAnswersCount for clarity
+    let skippedAnswersCount = 0; // New counter
     const rationales = [];
 
     quizData.forEach((question, index) => {
         const userAnswerIndex = userAnswers[index];
         const correctAnswer = question.answer_options.find(opt => opt.is_correct);
+        const questionNumber = index + 1; // For rationales
 
-        // Check if an answer was selected for the current question
         if (userAnswerIndex !== undefined && userAnswerIndex !== null) {
+            // Answer was provided (either correct or incorrect)
             const selectedOption = question.answer_options[userAnswerIndex];
 
             if (selectedOption && selectedOption.is_correct) {
-                score++;
+                score += 4; // +4 marks for correct answer
                 correctAnswersCount++;
             } else {
-                wrongAnswersCount++;
+                score -= 1; // -1 mark for incorrect answer
+                incorrectAnswersCount++;
                 let rationaleText = selectedOption ? selectedOption.rationale : 'No specific rationale provided for the selected wrong answer.';
-                // Display the correct answer. Handle both text and image answers.
-                let correctAnswerDisplay = correctAnswer ? (correctAnswer.text || (correctAnswer.image ? `<img src="${correctAnswer.image}" class="result-image-thumbnail">` : 'N/A')) : 'N/A';
-                rationales.push(`Question ${index + 1}: Your answer was incorrect. The correct answer was: ${correctAnswerDisplay}. Rationale: ${rationaleText}`);
+                let correctAnswerDisplay = getCorrectAnswerDisplay(question, correctAnswer);
+                rationales.push(`Question ${questionNumber}: Your answer was incorrect. The correct answer was: ${correctAnswerDisplay}. Rationale: ${rationaleText}`);
             }
         } else {
             // User skipped the question
-            wrongAnswersCount++;
-            let correctAnswerDisplay = correctAnswer ? (correctAnswer.text || (correctAnswer.image ? `<img src="${correctAnswer.image}" class="result-image-thumbnail">` : 'N/A')) : 'N/A';
-            rationales.push(`Question ${index + 1}: You skipped this question. The correct answer was: ${correctAnswerDisplay}. Rationale: ${correctAnswer ? correctAnswer.rationale : 'No specific rationale for correctness.'}`);
+            // No score change for skipped questions (0 marks)
+            skippedAnswersCount++;
+            let correctAnswerDisplay = getCorrectAnswerDisplay(question, correctAnswer);
+            rationales.push(`Question ${questionNumber}: You skipped this question. The correct answer was: ${correctAnswerDisplay}. Rationale: ${correctAnswer ? correctAnswer.rationale : 'No specific rationale for correctness.'}`);
         }
     });
 
-    return { score, correctAnswersCount, wrongAnswersCount, rationales };
+    // Helper function for display logic
+    function getCorrectAnswerDisplay(question, correctAnswer) {
+        if (!correctAnswer) return 'N/A';
+        if (question.question_type.includes('image_answers')) { // Check if the question uses image answers for display
+            return correctAnswer.image ? `<img src="${correctAnswer.image}" class="result-image-thumbnail" alt="Correct Answer">">` : 'N/A';
+        } else { // Assume text answers for displaying rationale
+            return correctAnswer.text || 'N/A';
+        }
+    }
+
+    return { score, correctAnswersCount, incorrectAnswersCount, skippedAnswersCount, rationales };
 }
 
 
@@ -940,10 +953,11 @@ function showResults() {
     
     resultElement.textContent = ''; // Clear any leftover messages
 
-    const { score, correctAnswersCount, wrongAnswersCount, rationales } = calculateScore();
+    const { score, correctAnswersCount, incorrectAnswersCount, skippedAnswersCount, rationales } = calculateScore();
 
-    finalScoreSpan.textContent = `${score} / ${quizData.length}`;
-    scoreDetailsParagraph.innerHTML = `Correct Answers: ${correctAnswersCount}<br>Wrong/Skipped Answers: ${wrongAnswersCount}<br><br>Detailed Rationales:<br>${rationales.join('<br>')}`;
+    // Max possible score is total questions * 4 marks per question
+    finalScoreSpan.textContent = `${score} / ${quizData.length * 4}`; 
+    scoreDetailsParagraph.innerHTML = `Correct Answers: ${correctAnswersCount}<br>Incorrect Answers: ${incorrectAnswersCount}<br>Skipped Answers: ${skippedAnswersCount}<br><br>Detailed Rationales:<br>${rationales.join('<br>')}`;
 
     restartBtn.classList.remove('hidden'); // Show restart button only on results screen
 }

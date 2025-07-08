@@ -716,22 +716,22 @@ const quizData = [
         "question_image": "pictures/q24.png", // Placeholder image path if applicable
         "answer_options": [
             {
-                "image": "pictures/q24a1.png",
+                "image": "pictures/Q2401.png",
                 "is_correct": false,
                 "rationale": "Wrapping around makes the character reappear on the opposite side, not prevent going out of edge."
             },
             {
-                "image": "pictures/q24a2.png",
+                "image": "pictures/Q24o2.png",
                 "is_correct": true,
                 "rationale": "A common way to prevent a character from leaving the screen is to detect when it reaches an edge and then reverse its direction (bounce)."
             },
             {
-                "image": "pictures/q24a3.png",
+                "image": "pictures/Q24o3.png",
                 "is_correct": false,
                 "rationale": "Increasing speed has no effect on preventing the character from going out of bounds."
             },
             {
-                "image": "pictures/q24a4.png",
+                "image": "pictures/Q24o4.png",
                 "is_correct": false,
                 "rationale": "Setting size to zero would hide the character, not prevent it from leaving the edge."
             }
@@ -744,22 +744,22 @@ const quizData = [
         "question_image": null, // Placeholder image path if applicable
         "answer_options": [
             {
-                "image": "pictures/q25a1.png",
+                "image": "pictures/Q25o1.png",
                 "is_correct": false,
                 "rationale": "This code draws a square, not a circle."
             },
             {
-                "image": "pictures/q25a2.png",
+                "image": "pictures/Q25o2.png",
                 "is_correct": true,
                 "rationale": "In many visual programming environments (like Logo or Scratch), repeating a small forward movement and a small turn 360 times (or a multiple of 360) effectively draws a circle."
             },
             {
-                "image": "pictures/q25a3.png",
+                "image": "pictures/Q25o3.png",
                 "is_correct": false,
                 "rationale": "This only draws a straight line."
             },
             {
-                "image": "pictures/q25a4.png",
+                "image": "pictures/Q25o4.png",
                 "is_correct": false,
                 "rationale": "This positions the drawing tool but does not draw a circle."
             }

@@ -47,13 +47,14 @@ const quizData = [
         "answer_options": [
             {
                 "image": "pictures/q1a1.png",
-                "is_correct": false,
-                "rationale": "This output does not match the execution of the given code blocks."
+                "is_correct": true,
+                "rationale": "The code blocks lead to this specific visual output/result."
+                
             },
             {
                 "image": "pictures/q1a2.png",
-                "is_correct": true,
-                "rationale": "The code blocks lead to this specific visual output/result."
+                "is_correct": false,
+                "rationale": "This output does not match the execution of the given code blocks."
             },
             {
                 "image": "pictures/q1a3.png",
@@ -111,8 +112,8 @@ const quizData = [
             },
             {
                 "text": "Option B: b, d",
-                "is_correct": true,
-                "rationale": "Based on the expected output, this combination of 'b' and 'd' code elements is correct."
+                "is_correct": false,
+                "rationale": "This option does not represent the correct code for the output."
             },
             {
                 "text": "Option C: c, a",
@@ -121,8 +122,9 @@ const quizData = [
             },
             {
                 "text": "Option D: a, d",
-                "is_correct": false,
-                "rationale": "This option does not represent the correct code for the output."
+                "is_correct": true,
+                "rationale": "Based on the expected output, this combination of 'b' and 'd' code elements is correct."
+                
             }
         ]
     },
@@ -137,13 +139,14 @@ const quizData = [
         "answer_options": [
             {
                 "image": "pictures/q4a1.png",
-                "is_correct": false,
-                "rationale": "This code does not produce the specified drawing."
+                "is_correct": true,
+                "rationale": "This code sequence will correctly draw the specified output."
+                
             },
             {
                 "image": "pictures/q4a2.png",
-                "is_correct": true,
-                "rationale": "This code sequence will correctly draw the specified output."
+                "is_correct": false,
+                "rationale": "This code does not produce the specified drawing."
             },
             {
                 "image": "pictures/q4a3.png",
@@ -166,13 +169,14 @@ const quizData = [
         "answer_options": [
             {
                 "image": "pictures/q5a1.png",
-                "is_correct": true,
-                "rationale": "This code block sequence provides the correct solution to the puzzle."
+                "is_correct": false,
+                "rationale": "This code does not solve the puzzle correctly."
             },
             {
                 "image": "pictures/q5a2.png",
-                "is_correct": false,
-                "rationale": "This code does not solve the puzzle correctly."
+                "is_correct": true,
+                "rationale": "This code block sequence provides the correct solution to the puzzle."
+                
             },
             {
                 "image": "pictures/q5a3.png",
@@ -194,7 +198,7 @@ const quizData = [
         "question_image": "pictures/q6.png", // Assuming q6.png shows the for loop code
         "answer_options": [
             {
-                "text": "Option A: 1 2 3 4",
+                "text": "Option A: 3 2 1 4",
                 "is_correct": false,
                 "rationale": "This is not the correct order of execution for a typical 'for' loop structure (initialization, condition, body, increment)."
             },
@@ -209,7 +213,7 @@ const quizData = [
                 "rationale": "This is not the correct order of execution."
             },
             {
-                "text": "Option D: 3 2 1 4", // Assuming common for loop flow: (Init once) -> Condition -> Body -> Increment -> Condition -> ...
+                "text": "Option D: 1 2 4 3", // Assuming common for loop flow: (Init once) -> Condition -> Body -> Increment -> Condition -> ...
                 "is_correct": true,
                 "rationale": "The standard execution order for a 'for' loop is: (Initialization once), then loop: (Condition check), (Execute loop body), (Increment/Decrement), (Repeat condition check)."
             }
@@ -223,7 +227,7 @@ const quizData = [
         "question_image": null, // CORRECTED: No question image
         "answer_options": [
             {
-                "image": "pictures/q7a1.png", // CORRECTED: Now uses image
+                "image": "pictures/q7a4.png", // CORRECTED: Now uses image
                 "is_correct": false,
                 "rationale": "The loop condition is checked before each iteration."
             },
@@ -238,7 +242,7 @@ const quizData = [
                 "rationale": "The increment/decrement statement executes after each iteration."
             },
             {
-                "image": "pictures/q7a4.png", // CORRECTED: Now uses image
+                "image": "pictures/q7a1.png", // CORRECTED: Now uses image
                 "is_correct": true,
                 "rationale": "The initialization part of a 'for' loop is executed only once, at the very beginning of the loop's execution."
             }
@@ -263,13 +267,14 @@ const quizData = [
             },
             {
                 "text": "Option 3: A - 3 B - 1 C - 2",
-                "is_correct": true,
-                "rationale": "The correct execution flow for a while loop typically involves: (1) Condition check, (2) Loop body execution if condition is true, (3) Update variable that affects condition. The options would map A, B, C to these steps labeled 1, 2, 3 in your image."
+                "is_correct": false,
+                "rationale": "This mapping is incorrect."
             },
             {
                 "text": "Option 4: A - 1 B - 3 C - 2",
-                "is_correct": false,
-                "rationale": "This mapping is incorrect."
+                "is_correct": true,
+                "rationale": "The correct execution flow for a while loop typically involves: (1) Condition check, (2) Loop body execution if condition is true, (3) Update variable that affects condition. The options would map A, B, C to these steps labeled 1, 2, 3 in your image."
+                
             }
         ]
     },
@@ -306,12 +311,12 @@ const quizData = [
     // Question 10: Choose the correct rules for assigning variable identifier names
     {
         "question_type": "text_question_text_answers",
-        "question_text": "Choose the correct rules for assigning variable identifier names:",
+        "question_text": "Choose the incorrect rules for assigning variable identifier names:",
         "question_image": null, // Theory question, no image
         "answer_options": [
             {
                 "text": "Two variables must not have same names",
-                "is_correct": true, // Most fundamental rule for unique identification
+                "is_correct": false, // Most fundamental rule for unique identification
                 "rationale": "In most programming languages, variable names must be unique within their scope to avoid ambiguity."
             },
             {
@@ -325,8 +330,8 @@ const quizData = [
                 "rationale": "Variables can usually contain numbers after the first character, but this specific option is not marked as the single correct answer due to the structure limitation."
             },
             {
-                "text": "A variable can have symbols in their names",
-                "is_correct": false, // Usually only underscore is allowed, not all symbols
+                "text": "A variable can have symbols in their names except for underscores",
+                "is_correct": true, // Usually only underscore is allowed, not all symbols
                 "rationale": "Variables typically cannot have most special symbols in their names, only underscores are commonly allowed."
             }
         ]
@@ -397,12 +402,12 @@ const quizData = [
         "question_image": "pictures/q13.png", // Assuming q13.png shows the desired output
         "answer_options": [
             {
-                "image": "pictures/q13a1.png",
+                "image": "pictures/q13a2.png",
                 "is_correct": false,
                 "rationale": "This code does not produce the specified output."
             },
             {
-                "image": "pictures/q13a2.png",
+                "image": "pictures/q13a1.png",
                 "is_correct": true,
                 "rationale": "This sequence of code blocks is designed to generate the exact output shown."
             },
@@ -483,11 +488,7 @@ const quizData = [
         "question_text": "What is the output of the following puzzle?",
         "question_image": "pictures/q16.png", // Assuming q16.png shows the puzzle code
         "answer_options": [
-            {
-                "image": "pictures/q16a1.png",
-                "is_correct": true,
-                "rationale": "Executing this puzzle's code results in this specific visual outcome."
-            },
+            
             {
                 "image": "pictures/q16a2.png",
                 "is_correct": false,
@@ -497,6 +498,11 @@ const quizData = [
                 "image": "pictures/q16a3.png",
                 "is_correct": false,
                 "rationale": "This output does not match the execution of the puzzle."
+            },
+            {
+                "image": "pictures/q16a1.png",
+                "is_correct": true,
+                "rationale": "Executing this puzzle's code results in this specific visual outcome."
             },
             {
                 "image": "pictures/q16a4.png",
@@ -518,7 +524,7 @@ const quizData = [
                 "rationale": "This conditional statement is syntactically or logically incorrect."
             },
             {
-                "image": "pictures/q17a2.png",
+                "image": "pictures/q17a4.png",
                 "is_correct": true,
                 "rationale": "This image displays a correctly structured and usable conditional statement block."
             },
@@ -528,7 +534,7 @@ const quizData = [
                 "rationale": "This conditional statement is syntactically or logically incorrect."
             },
             {
-                "image": "pictures/q17a4.png",
+                "image": "pictures/q17a2.png",
                 "is_correct": false,
                 "rationale": "This conditional statement is syntactically or logically incorrect."
             }
@@ -639,7 +645,7 @@ const quizData = [
                 "rationale": "Functions can contain conditional statements, but this isn't their full definition."
             },
             {
-                "text": "A function is a block which can hold other code so that we can use it whenever and wherever we want after defining the function",
+                "text": "A function is a named, reusable block of code that performs a specific task. It encapsulates code that can be called multiple times.",
                 "is_correct": true,
                 "rationale": "A function is a named, reusable block of code that performs a specific task. It encapsulates code that can be called multiple times."
             },
@@ -668,7 +674,7 @@ const quizData = [
                 "rationale": "While true, this is a consequence, not the definition of an event itself."
             },
             {
-                "text": "Event is an user input through keyboard or a mouse and can execute the code after the user input is given",
+                "text": "In programming, an event is an action or occurrence recognized by software, often originating from user interaction (like clicks, key presses) or system changes, that triggers specific code execution.",
                 "is_correct": true,
                 "rationale": "In programming, an event is an action or occurrence recognized by software, often originating from user interaction (like clicks, key presses) or system changes, that triggers specific code execution."
             },
@@ -687,12 +693,12 @@ const quizData = [
         "question_image": "pictures/q23.png", // Assuming q23.png shows the puzzle scenario
         "answer_options": [
             {
-                "image": "pictures/q23a1.png",
+                "image": "pictures/q23a2.png",
                 "is_correct": false,
                 "rationale": "This code does not fully address both conditions (collect flag AND knight vanish on dragon touch)."
             },
             {
-                "image": "pictures/q23a2.png",
+                "image": "pictures/q23a1.png",
                 "is_correct": true,
                 "rationale": "This code includes the necessary logic to collect the flag and also to handle the knight vanishing event when touched by the dragon."
             },
